@@ -7,12 +7,11 @@ import com.racerxdl.minecrowdcontrol.effect.api.EffectCtx;
 import com.racerxdl.minecrowdcontrol.effect.api.IEffect;
 import net.minecraft.entity.player.PlayerEntity;
 
-public class EffectRemoveHeart implements IEffect
+public class EffectSetPlayerOnFire implements IEffect
 {
     @Override
     public CommandResult exec(EffectCtx ctx)
     {
-
         CommandResult res = new CommandResult(ctx.getStates());
         PlayerEntity player = ctx.getPlayer();
         RequestType type = ctx.getType();
@@ -27,13 +26,12 @@ public class EffectRemoveHeart implements IEffect
             return res.setEffectResult(EffectResult.Unavailable);
         }
 
-        float health = ctx.getPlayer().getHealth();
-
-        if (health > 2) {
-           player.setHealth(player.getHealth() - 2);
-           res.setEffectResult(EffectResult.Success);
+        if (player.getFireTimer() == -20)
+        {
+            player.setFire(5);
+            res.setEffectResult(EffectResult.Success);
         } else {
-          res.setEffectResult(EffectResult.Unavailable);
+            res.setEffectResult(EffectResult.Retry);
         }
 
         return res;

@@ -31,6 +31,7 @@ public class EffectKillPlayer implements IEffect
             player.inventory.mainInventory.forEach(is -> player.dropItem(is, false));
             player.inventory.offHandInventory.forEach(is -> player.dropItem(is, false));
             player.inventory.armorInventory.forEach(is -> player.dropItem(is, false));
+            player.setHealth(0);
             res.setEffectResult(EffectResult.Success);
         } else {
             res.setEffectResult(EffectResult.Unavailable);
