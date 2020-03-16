@@ -5,5 +5,5 @@ import com.racerxdl.minecrowdcontrol.CommandResult;
 @FunctionalInterface
 public interface IEffect
 {
-    CommandResult exec(EffectCtx etx);
+    CommandResult exec(EffectCtx ctx);
 }
